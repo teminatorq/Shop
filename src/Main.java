@@ -32,8 +32,6 @@ public class Main
                 while (true) {
 
 
-
-
                     //global variables above
 
                     //use these methods below separately or check to use 1 method to show all these methods
@@ -47,7 +45,6 @@ public class Main
                     //global things above
 
                     //game:
-                    //while zamiast if?
                     System.out.print("Home...\n\n");
                     Sleep.sleep2();
 
@@ -56,7 +53,8 @@ public class Main
                         for (int x = 0; x < 30; x++) //Home
                         {
                             Clock24.clock24();
-
+                            StatsBars.display();
+                            Sleep.sleep2();
                             //Option to use bed to restore sleep and skip time
                             System.out.print(x + "\n\n");
 
