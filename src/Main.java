@@ -2,7 +2,7 @@ import java.util.Scanner;
 import java.util.Random;
 public class Main
 {
-
+    static int miejsce =1;
     public static void main(String[] args)
     {
         Scanner scanner = new Scanner(System.in);
@@ -23,38 +23,37 @@ public class Main
                 break;
             }
 
-            else if (program == 1) {
+            else if (program == 1)
+            {
                 System.out.print("\nWelcome to the Shop game\n");
                 Sleep.sleep4();
 
 
-                int miejsce =1;
-                while (true) {
 
+                while (true)
+                {
 
-                    //global variables above
-
-                    //use these methods below separately or check to use 1 method to show all these methods
-                    //method; to display money
-
-                    //bars below
-                    //method(); to display health bar
-                    //method(); to display hunger bar
-                    //methos(); to display sleep  bar
-
-                    //global things above
-
+                    //125line ends game
+                    if (miejsce == 0)
+                    {
+                        break;
+                    }
                     //game:
-                    System.out.print("Home...\n\n");
-                    Sleep.sleep2();
 
+
+                    // HOME
                     if (miejsce == 1)
                     {
-                        for (int x = 0; x < 30; x++) //Home
+                        if (StatsBars.playerHP<=0){break;}
+                        System.out.print("Home...\n\n");
+                        Sleep.sleep2();
+
+                        for (int x = 1; x < 31; x++) //Home
                         {
                             Clock24.clock24();
+                            if (StatsBars.playerHP<=0){break;} // end game once hp hits 0
                             StatsBars.display();
-                            Sleep.sleep2();
+                            Sleep.sleep1();
                             //Option to use bed to restore sleep and skip time
                             System.out.print(x + "\n\n");
 
@@ -64,18 +63,22 @@ public class Main
                     }
 
 
-                    else if (miejsce == 2) // Restaurant
+                    // Restaurant
+                    else if (miejsce == 2)
                     {
-
+                        if (StatsBars.playerHP<=0){break;}
                         System.out.print("\nRestaurant...\n");
 
                         // use random (,) times method random (,) to define which id from array Menu[] is on the menu(define prices in constructor)
-                        //
 
                     }
 
-                     if (miejsce == 3) // Job
+
+                    // Job
+                     if (miejsce == 3)
                     {
+                        int while1=1;
+                        if (StatsBars.playerHP<=0){break;}
                         int shift = random.nextInt(6,10);
                         //int shiftTime = shift * 60;
                         int shiftTime = 40;
@@ -88,11 +91,12 @@ public class Main
                         {
 
                             Clock24.clock24();
-
+                            if (StatsBars.playerHP<=0){while1=0; break;} // end game once hp hits 0
+                            StatsBars.display();
                             System.out.print(x +"\n\n");
+
                         }
                         //You need to leave your home in 15 minute period before 9.
-
 
                         // use random (6,10) to define amount of hours of today's shift.
                         // every m in job is losing hunger and sleep faster
@@ -103,10 +107,10 @@ public class Main
                                                     "Where am I heading to?...\n",
                                                     shift);
                         Sleep.sleep4();
-                        while(true)
+                        while(while1==1)
                         {
                             Clock24.timeDisplay();
-
+                            StatsBars.display();
                             System.out.print("\n1. Home, 2. Restaurant\n");
                             miejsce = scanner.nextInt();
                             scanner.nextLine();
@@ -115,38 +119,33 @@ public class Main
 
                                 for(int x=0; x<15;x++)
                                 {
+                                    if (StatsBars.playerHP<=0){break;}
                                     Clock24.clock24();
                                 }
+                                StatsBars.playerHP=0;
                                 break;
                             }
+
+
 
                             System.out.print("Think about proper option now.\n");
                             Sleep.sleep4(); //sleep
                         }
+
                     }
 
 
 
 
                 }
+                //once player is dead
+                Sleep.sleep2();
+                System.out.print("Yes...\nYou are dead\nbye bye\n");
+                Sleep.sleep2();
+                break;
             }
 
         }
     }
 
 }
-
-
-
-/*
-          try
-                  {
-                  Thread.sleep(4000);
-    }
-            catch(InterruptedException e){}
-        System.out.println("It is 2nd program");
-                try
-                        {
-                        new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
-    }
-            catch (Exception e) {}*/
