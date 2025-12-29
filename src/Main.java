@@ -19,14 +19,14 @@ public class Main
             if (program == 3)
             {
                 System.out.println("\nSee ya next time You 9-5 b##ch");
-                Sleep.sleep4();
+                Sleep.sleep(4);
                 break;
             }
 
             else if (program == 1)
             {
                 System.out.print("\nWelcome to the Shop game\n");
-                Sleep.sleep4();
+                Sleep.sleep(4);
 
 
 
@@ -46,14 +46,14 @@ public class Main
                     {
                         if (StatsBars.playerHP<=0){break;}
                         System.out.print("Home...\n\n");
-                        Sleep.sleep2();
+                        Sleep.sleep(2);
 
                         for (int x = 1; x < 31; x++) //Home
                         {
                             Clock24.clock24();
                             if (StatsBars.playerHP<=0){break;} // end game once hp hits 0
                             StatsBars.display();
-                            Sleep.sleep1();
+                            Sleep.sleep(1);
                             //Option to use bed to restore sleep and skip time
                             System.out.print(x + "\n\n");
 
@@ -77,7 +77,7 @@ public class Main
                     // Job
                      if (miejsce == 3)
                     {
-                        int while1=1;
+                        boolean isPlayerAlive = true;
                         if (StatsBars.playerHP<=0){break;}
                         int shift = random.nextInt(6,10);
                         //int shiftTime = shift * 60;
@@ -85,13 +85,13 @@ public class Main
 
 
                         System.out.printf("\nJob...\ntoday's shift is %d hours\n", shift);
-                        Sleep.sleep2();
+                        Sleep.sleep(2);
 
                         for(int x=0; x<shiftTime; x++)
                         {
 
                             Clock24.clock24();
-                            if (StatsBars.playerHP<=0){while1=0; break;} // end game once hp hits 0
+                            if (StatsBars.playerHP<=0){isPlayerAlive=false; break;} // end game once hp hits 0
                             StatsBars.display();
                             System.out.print(x +"\n\n");
 
@@ -106,8 +106,8 @@ public class Main
                                 System.out.printf("\nMy shift of %d hours is finished.\n" +
                                                     "Where am I heading to?...\n",
                                                     shift);
-                        Sleep.sleep4();
-                        while(while1==1)
+                        Sleep.sleep(4);
+                        while(isPlayerAlive==true)
                         {
                             Clock24.timeDisplay();
                             StatsBars.display();
@@ -129,7 +129,7 @@ public class Main
 
 
                             System.out.print("Think about proper option now.\n");
-                            Sleep.sleep4(); //sleep
+                            Sleep.sleep(4); //sleep
                         }
 
                     }
@@ -139,9 +139,9 @@ public class Main
 
                 }
                 //once player is dead
-                Sleep.sleep2();
+                Sleep.sleep(2);
                 System.out.print("Yes...\nYou are dead\nbye bye\n");
-                Sleep.sleep2();
+                Sleep.sleep(2);
                 break;
             }
 

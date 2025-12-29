@@ -10,11 +10,4 @@ public class Methods
     }
 
 
-    static void sleep(double s ) //sleep in seconds based on the argument
-    {
-
-        try {Thread.sleep((int)(s*1000));} catch (InterruptedException e) {}
-
-    }
-
 }
