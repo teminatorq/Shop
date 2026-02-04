@@ -8,12 +8,11 @@ public class Sleep
     }
 
 
-    static void sleepm() // tick rate for Clock24
+    static void sleep_m() // tick rate for Clock24
     {
 
-        try {Thread.sleep(500);} catch (InterruptedException e) {}
+        try {Thread.sleep(20);} catch (InterruptedException e) {}
 
     }
 
 }
-

@@ -1,43 +1,43 @@
 public class Clock24 //24h clock visible entire time
 {
-    //variables:
-    static double clockh = 6;  //prolly gonna use int eventually(double from previous version of  function)
-    static double clockm = 00; //prolly gonna use int eventually(double from previous version of  function)
-    //1h = 30s irl, 2m=1s irl
+
+    static int hour;
+    static int minute;
+    static int day;
+
 
 
     public static void clock24()
     {
-        Sleep.sleepm();
-        //if (clockh>24)clockh=0; //day++}
-        clockm++;
+        Sleep.sleep_m(); // tick rate for Clock24
 
-        if (clockm > 59) {
+        minute++;
+        if (minute > 59) {
             StatsBars.statsDecreasing();
-            clockh ++;
-            clockm =0;
+            hour++;
+            minute =0;
         }
-        timeDisplay();
+
+        if (hour >= 24)
+        {
+            hour = 0;
+            day++;
+
+        }
 
     }
-
 
 
     public static void timeDisplay()
     {
-        if(clockm<9.99)
+        if (minute <9.99)
         {
-            System.out.printf("%.0f", clockh); System.out.print(":0"); System.out.printf("%.0f\n", clockm);
+            System.out.printf("%d", hour); System.out.print(":0"); System.out.printf("%d   ", minute); System.out.printf("Day %d\n", day);
         }
         else
         {
-            System.out.printf("%.0f:%.0f\n", clockh, clockm);
+            System.out.printf("%d:%d   Day %d\n", hour, minute, day);
         }
 
     }
 }
-
-/*
-Clock24.timeDisplay();
-Clock24.clock24();
- */
